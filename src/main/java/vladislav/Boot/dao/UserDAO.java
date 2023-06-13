@@ -1,7 +1,5 @@
 package vladislav.Boot.dao;
 
-
-
 import vladislav.Boot.model.User;
 
 import java.util.List;
@@ -12,9 +10,9 @@ public interface UserDAO {
 
     public User personById(Long id);
 
-    public void save(User user);
+    public User save(User user);
 
-    public void update(Long id, User user);
+    public User update(User user);
 
     public void delete(Long id);
 

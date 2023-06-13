@@ -3,6 +3,7 @@ package vladislav.Boot.servise;
 import org.springframework.transaction.annotation.Transactional;
 import vladislav.Boot.model.User;
 
+
 import java.util.List;
 
 public interface UserServise {
@@ -14,10 +15,10 @@ public interface UserServise {
     User personById(Long id);
 
     @Transactional
-    void save(User user);
+    User save(User user);
 
     @Transactional
-    void update(Long id, User user);
+    User update(User user);
 
     @Transactional
     void delete(Long id);

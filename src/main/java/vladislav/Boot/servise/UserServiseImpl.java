@@ -2,44 +2,48 @@ package vladislav.Boot.servise;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import vladislav.Boot.dao.UserDaoImpl;
 import vladislav.Boot.model.User;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+
+
 import java.util.List;
 
 @Service
 public class UserServiseImpl implements UserServise {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+   private final UserDaoImpl userDao;
+
+    public UserServiseImpl(UserDaoImpl userDao) {
+        this.userDao = userDao;
+    }
 
     @Override
     @Transactional
     public List<User> getAllPeople() {
-        return entityManager.createQuery("SELECT a FROM User a", User.class).getResultList();
+        return userDao.getAllPeople();
     }
 
     @Override
     @Transactional
     public User personById(Long id) {
-        return entityManager.find(User.class, id);
+        return userDao.personById(id);
     }
 
     @Override
     @Transactional
-    public void save(User user) {
-        entityManager.persist(user);
+    public User save(User user) {
+       return userDao.save(user);
     }
 
     @Override
     @Transactional
-    public void update(Long id, User user) {
-        entityManager.merge(user);
+    public User update(User user) {
+       return userDao.update(user);
     }
 
     @Override
     @Transactional
     public void delete(Long id) {
-        entityManager.remove(personById(id));
+        userDao.delete(id);
     }
 }

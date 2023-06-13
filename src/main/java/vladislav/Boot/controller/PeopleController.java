@@ -3,8 +3,10 @@ package vladislav.Boot.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import vladislav.Boot.model.User;
 import vladislav.Boot.servise.UserServise;
+
 
 @Controller
 @RequestMapping("/")
@@ -42,7 +44,7 @@ public class PeopleController {
 
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("user") User user, @PathVariable("id") Long id) {
-        userServise.update(id, user);
+        userServise.update(user);
         return "redirect:/";
     }
 

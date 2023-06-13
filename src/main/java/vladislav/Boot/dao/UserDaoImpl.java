@@ -4,7 +4,9 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import vladislav.Boot.model.User;
+
 import java.util.List;
+
 
 @Repository
 public class UserDaoImpl implements UserDAO {
@@ -23,13 +25,14 @@ public class UserDaoImpl implements UserDAO {
     }
 
     @Override
-    public void save(User user) {
-        entityManager.persist(user);
+    public User save(User user) {
+      return entityManager.merge(user);
     }
 
     @Override
-    public void update(Long id, User user) {
-        entityManager.merge(user);
+    public User update(User user) {
+
+        return entityManager.merge(user);
     }
 
     @Override

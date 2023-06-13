@@ -1,6 +1,5 @@
 package vladislav.Boot.model;
 
-
 import jakarta.persistence.*;
 
 @Entity
